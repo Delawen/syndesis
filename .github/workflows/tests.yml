@@ -1,0 +1,16 @@
+name: Tests 1.x branch
+
+on: pull_request
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+      - name: Test Syndesis
+        run: cd app; mvn install
